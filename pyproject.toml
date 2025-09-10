@@ -1,0 +1,43 @@
+[tool.poetry]
+name = "async-file-sorter"
+version = "0.1.0"
+description = "Асинхронний скрипт для сортування файлів за розширеннями"
+authors = ["Serhii Palamarchuk <your.email@example.com>"]
+readme = "README.md"
+packages = [{include = "async_file_sorter.py"}]
+
+[tool.poetry.dependencies]
+python = "^3.8.1"
+aiofiles = "^23.1.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.0.0"
+pytest-asyncio = "^0.21.0"
+black = "^23.0.0"
+flake8 = "^6.0.0"
+mypy = "^1.0.0"
+
+[tool.poetry.scripts]
+async-file-sorter = "async_file_sorter:main"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 79
+target-version = ['py38']
+
+[tool.mypy]
+python_version = "3.8"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+
+[tool.flake8]
+max-line-length = 79
+exclude = [".venv", "test_files", "sorted_files", "__pycache__"]
